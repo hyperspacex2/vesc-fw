@@ -1,0 +1,77 @@
+// Configure debug launch settings
+// Feel free to copy these and modify them for your debugger and MCU
+{
+    "version": "0.2.0",
+    "projectName": "vesc-f405rg",
+    "configurations": [
+        {
+            "name": "OpenOCD launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/FOC_KING/FOC_KING.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "device": "STM32F405RG",
+            "interface": "swd",
+            "runToEntryPoint": "main", // else it starts at reset handler - not interested
+            "preLaunchTask": "Build all", // configured in tasks.json
+            //"preLaunchCommands": ["make Cheap_FOCer_2"], // you can execute command instead of task
+            "svdFile": "", // Include svd to watch device peripherals
+            "swoConfig": {}, // currently (v1.7.0) not supported
+            "showDevDebugOutput": "raw",
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32f4x.cfg",
+            ]
+        },
+        {
+            "name": "st-link-server launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/FOC_KING/FOC_KING.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stlink",
+            "device": "STM32F405RG",
+            "interface": "swd",
+            "runToEntryPoint": "main", // else it starts at reset handler - not interested
+            "preLaunchTask": "Build all", // configured in tasks.json
+            //"preLaunchCommands": ["stty rows 50000 cols 80"], // you can execute command instead of task
+            "svdFile": "", // Include svd to watch device peripherals
+            "swoConfig": {}, // currently (v1.7.0) not supported
+            "showDevDebugOutput": "raw",
+            "serverArgs": ["-c", "/opt/st/stm32cubeclt_1.12.1/STLink-gdb-server/bin/config1.txt"],
+        },
+        {
+            "name": "st-util launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/FOC_KING/FOC_KING.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "STM32F405RG",
+            "interface": "swd",
+            "runToEntryPoint": "main", // else it starts at reset handler - not interested
+            "preLaunchTask": "Build all", // configured in tasks.json
+            //"preLaunchCommands": ["make Cheap_FOCer_2"], // you can execute command instead of task
+            "svdFile": "", // Include svd to watch device peripherals
+            "swoConfig": {}, // currently (v1.7.0) not supported
+            "showDevDebugOutput": "raw"
+        },
+        {
+            "name": "st-util attach",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/FOC_KING/FOC_KING.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "stlink",
+            "device": "STM32F405RG",
+            "interface": "swd",
+            "runToEntryPoint": "main", // else it starts at reset handler - not interested
+            "preLaunchTask": "Build all", // configured in tasks.json
+            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
+            "svdFile": "", // Include svd to watch device peripherals
+            "swoConfig": {}, // currently (v1.7.0) not supported
+            "showDevDebugOutput": "raw"
+        },
+    ]
+}

@@ -1,0 +1,22 @@
+// Name ${workspaceRoot} folder path names to your project, also the defines for your MCU
+// Set paths to arm-none-eabi libraries as it is installed on your system
+{
+    "configurations": [
+        {
+            "name": "ARM none eabi GCC",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "DEBUG=1"
+                //"SystemCoreClock = 180000000UL"
+            ],
+            "compilerPath": "${workspaceFolder}/tools/gcc-arm-none-eabi-7-2018-q2-update/bin/arm-none-eabi-gcc",
+            "intelliSenseMode": "linux-gcc-arm",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}
