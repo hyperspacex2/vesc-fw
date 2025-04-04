@@ -15,3 +15,5 @@ workspace.code-workspace
 # Qt project settings
 *.pro.user
 *.pro.shared
+
+*.deb
